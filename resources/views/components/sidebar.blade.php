@@ -3,7 +3,7 @@
         <div class="sidebar-brand-icon">
             <img src="{{ asset('dist/img/logo/logo2.png') }}">
         </div>
-        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        <div class="sidebar-brand-text mx-3">BLUD Management</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item{{ request()->is('admin') ? ' active' : ''}}">
@@ -14,7 +14,7 @@
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Features
+        Master Data
     </div>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"

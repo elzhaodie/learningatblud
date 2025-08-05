@@ -32,37 +32,22 @@
                     <!-- Konten Container 2 -->
                         <div class="login-form">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Masuk</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Insert Bidang</h1>
                             </div>
-                            <form class="user">
+                            <form action="{{route ('insertbidangbaru.store')}}" method="POST" class="user">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                                        placeholder="Username / Email">
+                                    <input type="text" class="form-control" id="bidang_name" name="bidang_name"
+                                        placeholder="Masukkan nama bidang" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1A237E;">Tambah Bidang</button>
                                 </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember
-                                            Me</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <a href="{{ route('index') }}" class="btn btn-primary btn-block" style="background-color: #1A237E;">Login</a>
-                                </div>
-                                <hr>
                             </form>
-                            <div class="text-center">
-                                <a class="font-weight-bold small" href="{{ route('register') }}">Lupa Password?</a>
-                            </div>
-                            <div class="text-center">
-                            </div>
                         </div>
-                    
                 </div>
             </div>
+        {{-- End of Login Content --}}
     </body>
     
         {{-- Login Content --}}

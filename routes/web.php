@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\BidangController;
+
 
 // Default laravel page
 Route::get('/', function () {
@@ -18,6 +20,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('index');
+
+    // Route::get('/bidang', function () {
+    //     return view('admin.pages.insertbidang');
+    // })->name('bidang');
+
+    Route::get('/bidang', [BidangController::class, 'index'])->name('bidang');
+
+    Route::post('/insertbidangbaru', [BidangController::class, 'store'])
+            ->name('insertbidangbaru.store');
 
     Route::get('/alerts', function () {
         return view('admin.pages.alerts');
