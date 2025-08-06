@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\BidangController;
-
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\TimPenilaiController;
 
 // Default laravel page
 Route::get('/', function () {
@@ -21,14 +22,23 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         return view('admin.index');
     })->name('index');
 
-    // Route::get('/bidang', function () {
-    //     return view('admin.pages.insertbidang');
-    // })->name('bidang');
-
+    // Route for bidang management
     Route::get('/bidang', [BidangController::class, 'index'])->name('bidang');
-
     Route::post('/insertbidangbaru', [BidangController::class, 'store'])
             ->name('insertbidangbaru.store');
+    Route::get('/insertbidang', function () {
+        return view('admin.pages.insertbidang');
+    })->name('insertbidang');
+    Route::get('/admin/bidang/{id}/edit', [BidangController::class, 'edit'])->name('bidang.edit');
+    Route::put('/admin/bidang/{id}', [BidangController::class, 'update'])->name('bidang.update');
+
+    // Route for nilai management
+    Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai');
+
+    // Route for tim penilai management
+    Route::get('/timpenilai', [TimPenilaiController::class, 'index'])->name('timpenilai');
+    Route::get('/admin/timpenilai/{id}/edit', [TimPenilaiController::class, 'edit'])->name('timpenilai.edit');
+    Route::put('/admin/timpenilai/{id}', [TimPenilaiController::class, 'update'])->name('timpenilai.update');
 
     Route::get('/alerts', function () {
         return view('admin.pages.alerts');

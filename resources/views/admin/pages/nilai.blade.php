@@ -3,7 +3,7 @@
     <head>
         {{-- head --}}
         @include('components.head')
-        <title>Bidang</title>
+        <title>Nilai</title>
     </head>
 
     <body id="page-top">
@@ -21,36 +21,35 @@
                     {{-- container fluid --}}
                     <div class="container-fluid" id="container-wrapper">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Master Bidang</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Master Nilai</h1>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Master Bidang</li>
+                                <li class="breadcrumb-item active" aria-current="page">Master Nilai</li>
                             </ol>
                         </div>
-                        {{-- Start Insert Bidang Form Content --}}
-                            <div class="row mb-3">
+                        <div class="row mb-3">
                                 <div class="col-lg-12">
-                                    {{-- Form Basic --}}
                                     <div class="card mb-4">
                                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">Insert Master Bidang</h6>
+                                            <a href="" class="btn btn-primary mb-1">Tambah Nilai Baru</a> 
                                         </div>
-                                        <div class="card-body">
-                                            <form action="{{route ('insertbidangbaru.store')}}" method="POST" class="user">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="bidang_name" name="bidang_name"
-                                                        placeholder="Masukkan nama bidang" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1A237E;">Tambah Bidang</button>
-                                                </div>
-                                            </form>
+                                        <div class="table-responsive p-3">
+                                            <table class="table align-items-center table-flush" id="dataTable">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Nama Bidang</th>
+                                                        <th>Dibuat Tanggal</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        {{-- End Insert Bidang Form Content --}}
                         {{-- Modal Logout --}}
                         @include('components.modal-logout')
                     </div>

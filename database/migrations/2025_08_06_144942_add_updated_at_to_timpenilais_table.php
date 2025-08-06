@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUpdatedAtToBidangsTable extends Migration
+class AddUpdatedAtToTimpenilaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUpdatedAtToBidangsTable extends Migration
      */
     public function up()
     {
-        Schema::table('bidangs', function (Blueprint $table) {
-            $table->timestamp('updated_at')->nullable();
+        Schema::table('timpenilais', function (Blueprint $table) {
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddUpdatedAtToBidangsTable extends Migration
      */
     public function down()
     {
-        Schema::table('bidangs', function (Blueprint $table) {
-            $table->dropColumn('updated_at');
+        Schema::table('timpenilais', function (Blueprint $table) {
+            Schema::dropIfExists('timpenilais');
         });
     }
 }

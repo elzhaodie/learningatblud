@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bidang extends Model
+class Timpenilai extends Model
 {
     //menggunakan tabel 'bidangs'
-    protected $table = 'bidangs';
+    protected $table = 'timpenilais';
     // mematikan fungsi add current timestamp pada kolom created_at dan updated_at
     public $timestamps = true; 
     /**
      * Kolom-kolom yang dapat diisi secara massal (mass assignable).
      */
     protected $fillable = [
-        'bidang_name'
+        'opd_penilai'
     ];
 }
