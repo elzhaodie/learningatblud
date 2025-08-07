@@ -67,7 +67,10 @@
                                                         <td>{{ $timpenilai->id }}</td>
                                                         <td>{{ $timpenilai->opd_penilai }}</td>
                                                         <td>{{ $timpenilai->created_at }}</td>
-                                                        <td><a href="{{ route('timpenilai.edit', $timpenilai->id) }}" class="btn btn-sm btn-primary">Detail</a></td>
+                                                        <td>
+                                                            <a href="{{ route('timpenilai.edit', $timpenilai->id) }}" class="btn btn-sm btn-primary mb-1">Edit</a>
+                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                        </td>
                                                     </tr>
                                                     @empty
                                                     <tr>

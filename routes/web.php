@@ -2,6 +2,7 @@
 use App\Http\Controllers\BidangController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\TimPenilaiController;
+use App\Http\Controllers\DaerahController;
 
 // Default laravel page
 Route::get('/', function () {
@@ -39,6 +40,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/timpenilai', [TimPenilaiController::class, 'index'])->name('timpenilai');
     Route::get('/admin/timpenilai/{id}/edit', [TimPenilaiController::class, 'edit'])->name('timpenilai.edit');
     Route::put('/admin/timpenilai/{id}', [TimPenilaiController::class, 'update'])->name('timpenilai.update');
+
+    // Route for daerah management
+    Route::get('/daerah', [DaerahController::class, 'index'])->name('daerah');
+    Route::get('/insertdaerah', function () {
+        return view('admin.pages.insertdaerah');
+    })->name('insertdaerah');
+    Route::post('/insertdaerah', [DaerahController::class, 'store'])
+            ->name('insertdaerah.store');
+    Route::get('/admin/daerah/{id}/edit', [DaerahController::class, 'edit'])->name('daerah.edit');
+    Route::put('/admin/daerah/{id}', [DaerahController::class, 'update'])->name('daerah.update');
+
+    // Additional admin pages
+    Route::get('/insertdaerah', function () {
+        return view('admin.pages.insertdaerah');
+    })->name('insertdaerah');
 
     Route::get('/alerts', function () {
         return view('admin.pages.alerts');

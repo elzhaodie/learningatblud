@@ -33,18 +33,33 @@
                                     {{-- Form Basic --}}
                                     <div class="card mb-4">
                                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">Insert Master Bidang</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">Edit Master Bidang</h6>
                                         </div>
                                         <div class="card-body">
-                                            <form action="{{route ('insertbidangbaru.store')}}" method="POST" class="user">
+                                            <form action="{{ route('daerah.update', $daerah->id) }}" method="POST" class="user">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="form-group">
-                                                    <label for="select2SinglePlaceholder">Nama Bidang</label>
-                                                    <input type="text" class="form-control" id="bidang_name" name="bidang_name"
-                                                        placeholder="Masukkan nama bidang" required>
+                                                    <label for="select2SinglePlaceholder">Nama Daerah</label>
+                                                    <input type="text" class="form-control" id="daerah_name" name="daerah_name"
+                                                         value="{{ old('daerah_name', $daerah->daerah_name) }}" required>
                                                 </div>
+                                                <br>
+                                                    <label for="select2SinglePlaceholder">Jenis Daerah</label>
+                                                    @php
+                                                        $options = ['Kabupaten', 'Kota'];
+                                                        $selected = old('jenis_daerah', $daerah->jenis_daerah);
+                                                    @endphp
+
+                                                <select name="jenis_daerah" id="jenis_daerah" class="form-control" required>
+                                                    <option value="" disabled hidden {{ $selected == '' ? 'selected' : '' }}>Pilih jenis daerah</option>
+                                                    @foreach ($options as $option)
+                                                        <option value="{{ $option }}" {{ $selected == $option ? 'selected' : '' }}>{{ $option }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <br>
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1A237E;">Tambah Bidang</button>
+                                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1A237E;">Simpan Perubahan</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -70,3 +85,4 @@
         @include('components.scripts') 
     </body>
 </html>
+

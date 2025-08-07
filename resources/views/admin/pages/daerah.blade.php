@@ -3,7 +3,7 @@
     <head>
         {{-- head --}}
         @include('components.head')
-        <title>Bidang</title>
+        <title>Daerah</title>
     </head>
 
     <body id="page-top">
@@ -21,18 +21,18 @@
                     {{-- container fluid --}}
                     <div class="container-fluid" id="container-wrapper">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Master Bidang</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Master Daerah</h1>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Master Bidang</li>
+                                <li class="breadcrumb-item active" aria-current="page">Master Daerah</li>
                             </ol>
                         </div>
                         <div class="row mb-3">
                                 <div class="col-lg-12">
                                     <div class="card mb-4">
                                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <a href="{{ route('insertbidang') }}" class="btn btn-primary mb-1">Tambah Bidang Baru</a> 
-                                        </div>
+                                            <a href="{{ route('insertdaerah') }}" class="btn btn-primary mb-1">Tambah Daerah Baru</a>
+                                        </div> 
                                         @if ($message = Session::get('success'))
                                             <div class="card-header justify-content-between">
                                                 <div class="alert alert-success alert-dismissible" role="alert" style="margin-bottom: 0px;">
@@ -59,19 +59,21 @@
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <th>No</th>
-                                                        <th>Nama Bidang</th>
+                                                        <th>Jenis Daerah</th>
+                                                        <th>Nama Daerah</th>
                                                         <th>Dibuat Tanggal</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @forelse($bidangs as $bidang)
+                                                    @forelse($daerahs as $daerah)
                                                     <tr>
-                                                        <td>{{ $bidang->id }}</td>
-                                                        <td>{{ $bidang->bidang_name }}</td>
-                                                        <td>{{ $bidang->created_at }}</td>
+                                                        <td>{{ $daerah->id }}</td>
+                                                        <td>{{ $daerah->jenis_daerah }}</td>
+                                                        <td>{{ $daerah->daerah_name }}</td>
+                                                        <td>{{ $daerah->created_at }}</td>
                                                         <td>
-                                                            <a href="{{ route('bidang.edit', $bidang->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                            <a href="{{ route('daerah.edit', $daerah->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="" class="btn btn-sm btn-danger">Delete</a></td>
                                                         </td>
                                                     </tr>

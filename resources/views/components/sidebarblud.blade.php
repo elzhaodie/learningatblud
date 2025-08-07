@@ -3,7 +3,6 @@
         <div class="sidebar-brand-icon">
             <img src="{{ asset('dist/img/logo/logo2.png') }}">
         </div>
-        <div class="sidebar-brand-text mx-3">BLUD Management</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item{{ request()->is('admin') ? ' active' : ''}}">
@@ -31,6 +30,7 @@
                 <a class="collapse-item{{ request()->is('admin/bidang') ? ' active' : '' }}" href="{{ route('bidang') }}">Master Bidang</a>
                 <a class="collapse-item{{ request()->is('admin/nilai') ? ' active' : '' }}" href="{{ route('nilai') }}">Master Nilai</a>
                 <a class="collapse-item{{ request()->is('admin/timpenilai') ? ' active' : '' }}" href="{{ route('timpenilai') }}">Master Tim Penilai</a>
+                <a class="collapse-item{{ request()->is('admin/daerah') ? ' active' : '' }}" href="{{ route('daerah') }}">Master Daerah</a>
             </div>
         </div>
     </li>

@@ -40,6 +40,7 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="form-group">
+                                                    <label for="select2SinglePlaceholder">Nama Bidang</label>
                                                     <input type="text" class="form-control" id="bidang_name" name="bidang_name"
                                                          value="{{ old('bidang_name', $bidang->bidang_name) }}" required>
                                                 </div>
