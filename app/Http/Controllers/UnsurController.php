@@ -14,85 +14,10 @@ class UnsurController extends BaseController
     public function index()
     {
         $data = Unsur::join('penilaians', 'unsurs.penilaian_id', '=', 'penilaians.id')
-                            ->select('unsurs.id','penilaians.penilaian_name', 'unsurs.unsur_name', 'unsurs.bobot')
-                            ->where('penilaians.id', '=', '1')
+                            ->select('unsurs.id','penilaians.penilaian_name', 'unsurs.indikator','unsurs.unsur','unsurs.bobot')
                             ->get();
 
-        
-        $totalBobot = $data->sum('bobot');
-
-        return view('admin.pages.penilaian', compact('data', 'totalBobot'));
+        return view('admin.pages.unsur', compact('data'));
     }
 
-    public function edit($id)
-    {
-        $penilaian = Penilaian::findOrFail($id);
-        return view('admin.pages.editpenilaian', compact('penilaian'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'penilaian_name' => 'required|string|max:255',
-        ]);
-
-        $penilaian = Penilaian::findOrFail($id);
-
-        $penilaian->update([
-            'penilaian_name' => $validated['penilaian_name'],
-        ]);
-
-        return redirect()->route('penilaiansubstantif')->with([
-                'success' => 'Master Penilaian berhasil diperbarui!',
-                'error' => 'Master Penilaian gagal diperbarui!',
-            ]);
-    }
-
-    public function indexteknis()
-    {
-        $data = Penilaian::join('kategoripenilaians', 'penilaians.kategori_penilaian_id', '=', 'kategoripenilaians.id')
-                            ->select('penilaians.id','kategoripenilaians.kategori_name', 'penilaians.penilaian_name', 'penilaians.bobot')
-                            ->where('kategoripenilaians.id', '=', '2')
-                            ->get();
-
-        $totalBobot = $data->sum('bobot');
-
-        return view('admin.pages.penilaianteknis', compact('data', 'totalBobot'));
-    }
-
-    public function indexadministratif()
-    {
-        $data = Penilaian::join('kategoripenilaians', 'penilaians.kategori_penilaian_id', '=', 'kategoripenilaians.id')
-                            ->select('penilaians.id','kategoripenilaians.kategori_name', 'penilaians.penilaian_name', 'penilaians.bobot')
-                            ->where('kategoripenilaians.id', '=', '3')
-                            ->get();
-
-        $totalBobot = $data->sum('bobot');
-
-        return view('admin.pages.penilaianadministratif', compact('data', 'totalBobot'));
-    }
-
-    public function administratifedit($id)
-    {
-        $penilaian = Penilaian::findOrFail($id);
-        return view('admin.pages.editpenilaianadministratif', compact('penilaian'));
-    }
-
-    public function administratifupdate(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'penilaian_name' => 'required|string|max:255',
-        ]);
-
-        $penilaian = Penilaian::findOrFail($id);
-
-        $penilaian->update([
-            'penilaian_name' => $validated['penilaian_name'],
-        ]);
-
-        return redirect()->route('penilaianadministratif')->with([
-                'success' => 'Master Penilaian berhasil diperbarui!',
-                'error' => 'Master Penilaian gagal diperbarui!',
-            ]);
-    }
 }

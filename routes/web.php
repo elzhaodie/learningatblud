@@ -4,7 +4,7 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\TimPenilaiController;
 use App\Http\Controllers\DaerahController;
 use App\Http\Controllers\PenilaianController;
-
+use App\Http\Controllers\UnsurController;
 
 // Default laravel page
 Route::get('/', function () {

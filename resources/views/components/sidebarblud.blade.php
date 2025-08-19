@@ -44,6 +44,7 @@
                     <a class="collapse-item{{ request()->is('admin/penilaian/teknis*') ? ' active' : '' }}" href="{{ route('penilaianteknis') }}">Teknis</a>
                     <a class="collapse-item{{ request()->is('admin/penilaian/administratif*') ? ' active' : '' }}" href="{{ route('penilaianadministratif') }}">Administratif</a>
                 </div>
+                <a class="collapse-item{{ request()->is('admin/unsur') ? ' active' : '' }}" href="{{ route('unsur') }}">Master Unsur</a>
             </div>
         </div>
     </li>
