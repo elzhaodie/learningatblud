@@ -31,6 +31,19 @@
                 <a class="collapse-item{{ request()->is('admin/nilai') ? ' active' : '' }}" href="{{ route('nilai') }}">Master Nilai</a>
                 <a class="collapse-item{{ request()->is('admin/timpenilai') ? ' active' : '' }}" href="{{ route('timpenilai') }}">Master Tim Penilai</a>
                 <a class="collapse-item{{ request()->is('admin/daerah') ? ' active' : '' }}" href="{{ route('daerah') }}">Master Daerah</a>
+                <a class="collapse-item{{ request()->is('admin/penilaian') ? ' active' : '' }}" href="#" data-toggle="collapse" data-target="#collapsePenilaian"
+                aria-expanded="false" aria-controls="collapsePenilaian">
+                    Master Penilaian
+                </a>
+                {{-- Nested collapse content --}}
+                <div id="collapsePenilaian" class="collapse pl-3
+                    @if (request()->is('admin/penilaian/substantif*')|| request()->is('admin/penilaian/teknis*'))
+                    show
+                    @endif">
+                    <a class="collapse-item{{ request()->is('admin/penilaian/substantif*') ? ' active' : '' }}" href="{{ route('penilaiansubstantif') }}">Substantif</a>
+                    <a class="collapse-item{{ request()->is('admin/penilaian/teknis*') ? ' active' : '' }}" href="{{ route('penilaianteknis') }}">Teknis</a>
+                    <a class="collapse-item{{ request()->is('admin/penilaian/administratif*') ? ' active' : '' }}" href="{{ route('penilaianadministratif') }}">Administratif</a>
+                </div>
             </div>
         </div>
     </li>

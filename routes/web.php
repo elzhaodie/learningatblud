@@ -3,6 +3,8 @@ use App\Http\Controllers\BidangController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\TimPenilaiController;
 use App\Http\Controllers\DaerahController;
+use App\Http\Controllers\PenilaianController;
+
 
 // Default laravel page
 Route::get('/', function () {
@@ -51,6 +53,43 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/admin/daerah/{id}/edit', [DaerahController::class, 'edit'])->name('daerah.edit');
     Route::put('/admin/daerah/{id}', [DaerahController::class, 'update'])->name('daerah.update');
 
+    // Route for penilaian management
+    Route::prefix('penilaian')->group(function () {
+        Route::get('/substantif', [PenilaianController::class, 'indexsubstantif'])->name('penilaiansubstantif');
+        Route::get('/admin/penilaian/substantif/{id}/edit', [PenilaianController::class, 'edit'])->name('penilaiansubstantif.edit');
+        Route::put('/admin/penilaian/substantif/{id}', [PenilaianController::class, 'update'])->name('penilaiansubstantif.update');
+
+        Route::get('/teknis', [PenilaianController::class, 'indexteknis'])->name('penilaianteknis');
+
+        Route::get('/administratif', [PenilaianController::class, 'indexadministratif'])->name('penilaianadministratif');
+        Route::get('/admin/penilaian/administratif/{id}/edit', [PenilaianController::class, 'administratifedit'])->name('penilaianadministratif.edit');
+        Route::put('/admin/penilaian/administratif/{id}', [PenilaianController::class, 'administratifupdate'])->name('penilaianadministratif.update');
+    });
+
+    // Route for unsurs management
+    Route::get('/unsur', [UnsurController::class, 'index'])->name('unsur');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // Additional admin pages
     Route::get('/insertdaerah', function () {
         return view('admin.pages.insertdaerah');
