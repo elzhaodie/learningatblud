@@ -49,8 +49,60 @@
                                             </div>
                                         @endif -->
                         <div class="row mb-3">
-                                <div class="col-lg-12">
-                                    <div class="card mb-4">
+                            <div class="col-lg-12">
+                                    <div class="card mb-6">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <!-- Kiri -->
+                                                <div>
+                                                </div>
+
+                                                <!-- Kanan -->
+                                                <div class="d-flex">
+                                                    <!-- Kategori -->
+                                                    <div class="form-group mr-3">
+                                                        <label for="kategori_id">Kategori Penilaian :</label>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-primary btn-sm dropdown-toggle" href="#" id="kategori_id"
+                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                {{ request('kategori_id') 
+                                                                    ? $kategoris->firstWhere('id', request('kategori_id'))->kategori_name 
+                                                                    : 'Pilih Kategori Penilaian' }}
+                                                            </a>
+                                                            <div class="dropdown-menu">
+                                                                @foreach($kategoris as $kat)
+                                                                    <a class="dropdown-item" href="?kategori_id={{ $kat->id }}">
+                                                                        {{ $kat->kategori_name }}
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Nama Penilaian -->
+                                                    <div class="form-group">
+                                                        <label for="dropdown3">Nama Penilaian :</label>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-primary btn-sm dropdown-toggle" href="#" id="dropdown3"
+                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                {{ request('penilaian_id') 
+                                                                    ? $penilaians->firstWhere('id', request('penilaian_id'))->penilaian_name 
+                                                                    : 'Pilih Penilaian' }}
+                                                            </a>
+                                                            <div class="dropdown-menu">
+                                                                @foreach($penilaians as $pen)
+                                                                    <a class="dropdown-item" href="?kategori_id={{ request('kategori_id') }}&penilaian_id={{ $pen->id }}">
+                                                                        {{ $pen->penilaian_name }}
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Table -->
                                         <div class="table-responsive p-3">
                                             <table class="table align-items-center table-flush" id="dataTable">
                                                 <thead class="thead-light">
@@ -66,11 +118,11 @@
                                                 <tbody>
                                                     @forelse($data as $unsur)
                                                     <tr>
-                                                        <td>{{ $unsur->id }}</td>
-                                                        <td>{{ $unsur->penilaian_name }}</td>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $unsur->relasiunsurkepenilaian->penilaian_name }}</td>
                                                         <td>{{ $unsur->indikator }}</td>
                                                         <td>{{ $unsur->unsur }}</td>
-                                                        <td>{{ $unsur->bobot }}%</td>
+                                                        <td>{{ $unsur->bobot }}</td>
                                                         <td>
                                                             <a href="" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="" class="btn btn-sm btn-danger">Delete</a>
@@ -78,20 +130,22 @@
                                                     </tr>
                                                     @empty
                                                     <tr>
-                                                        <td colspan="4" class="text-center">Tidak ada data master unsur</td>
+                                                        <td colspan="6" class="text-center">Tidak ada data master unsur yang ditampilkan</td>
                                                     </tr>
                                                     @endforelse
+                                                    @if ($totalBobot !== null)
                                                     <tr>
                                                         <td colspan="3" class="text-right"><strong>Total</strong></td>
-                                                        
+                                                        <td><strong>{{ $totalBobot }}</strong></td>
                                                         <td></td>
                                                     </tr>
+                                                    @endif
                                                 </tbody>
                                             </table>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>    
+                        </div>
                         {{-- Modal Logout --}}
                         @include('components.modal-logout')
                     </div>
@@ -110,3 +164,6 @@
         @include('components.scripts') 
     </body>
 </html>
+
+
+<form method="GET" action="">

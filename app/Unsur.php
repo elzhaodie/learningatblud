@@ -19,4 +19,9 @@ class Unsur extends Model
         'unsur',
         'bobot',
     ];
+
+    public function relasiunsurkepenilaian()
+    {
+        return $this->belongsTo(Penilaian::class, 'penilaian_id');
+    }
 }
