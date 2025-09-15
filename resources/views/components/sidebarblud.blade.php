@@ -42,9 +42,27 @@
                     @endif">
                     <a class="collapse-item{{ request()->is('admin/penilaian/substantif*') ? ' active' : '' }}" href="{{ route('penilaiansubstantif') }}">Substantif</a>
                     <a class="collapse-item{{ request()->is('admin/penilaian/teknis*') ? ' active' : '' }}" href="{{ route('penilaianteknis') }}">Teknis</a>
-                    <a class="collapse-item{{ request()->is('admin/penilaian/administratif*') ? ' active' : '' }}" href="{{ route('penilaianadministratif') }}">Administratif</a>
+                    <a class="collapse-item{{ request()->is('admin/penilaian/administratiftelahupt*') ? ' active' : '' }}" href="{{ route('penilaianadministratif_telahupt') }}">Administratif Telah UPT</a>
+                    <a class="collapse-item{{ request()->is('admin/penilaian/administratifbelumupt*') ? ' active' : '' }}" href="{{ route('penilaianadministratif_belumupt') }}">Administratif Belum UPT</a>
                 </div>
                 <a class="collapse-item{{ request()->is('admin/unsur') ? ' active' : '' }}" href="{{ route('unsur') }}">Master Unsur</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterprosesbisnis"
+            aria-expanded="true" aria-controls="masterprosesbisnis">
+            <i class="fab fa-fw fa-wpforms"></i>
+            <span>Master Proses Bisnis</span>
+        </a>
+        <div id="masterprosesbisnis" class="collapse
+        @if (request()->is('admin/bidang') || request()->is('admin/dropdowns') || request()->is('admin/modals') || request()->is('admin/popovers') || request()->is('admin/progress-bars'))
+        show
+        @endif" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Master Proses Bisnis</h6>
+                <a class="collapse-item{{ request()->is('admin/ajukanpermohonan') ? ' active' : '' }}" href="{{ route('pengajuan') }}">Pengajuan BLUD</a>
+              
             </div>
         </div>
     </li>

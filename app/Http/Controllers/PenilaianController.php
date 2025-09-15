@@ -60,7 +60,7 @@ class PenilaianController extends BaseController
         return view('admin.pages.penilaianteknis', compact('data', 'totalBobot'));
     }
 
-    public function indexadministratif()
+    public function indexadministratif_telahupt()
     {
         $data = Penilaian::join('kategoripenilaians', 'penilaians.kategori_penilaian_id', '=', 'kategoripenilaians.id')
                             ->select('penilaians.id','kategoripenilaians.kategori_name', 'penilaians.penilaian_name', 'penilaians.bobot')
@@ -71,6 +71,19 @@ class PenilaianController extends BaseController
 
         return view('admin.pages.penilaianadministratif', compact('data', 'totalBobot'));
     }
+
+    public function indexadministratif_belumupt()
+    {
+        $data = Penilaian::join('kategoripenilaians', 'penilaians.kategori_penilaian_id', '=', 'kategoripenilaians.id')
+                            ->select('penilaians.id','kategoripenilaians.kategori_name', 'penilaians.penilaian_name', 'penilaians.bobot')
+                            ->where('kategoripenilaians.id', '=', '4')
+                            ->get();
+
+        $totalBobot = $data->sum('bobot');
+
+        return view('admin.pages.penilaianadministratif', compact('data', 'totalBobot'));
+    }
+
 
     public function administratifedit($id)
     {

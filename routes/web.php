@@ -5,6 +5,8 @@ use App\Http\Controllers\TimPenilaiController;
 use App\Http\Controllers\DaerahController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\UnsurController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\PengajuanController;
 
 // Default laravel page
 Route::get('/', function () {
@@ -61,13 +63,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::get('/teknis', [PenilaianController::class, 'indexteknis'])->name('penilaianteknis');
 
-        Route::get('/administratif', [PenilaianController::class, 'indexadministratif'])->name('penilaianadministratif');
+        Route::get('/administratiftelahupt', [PenilaianController::class, 'indexadministratif_telahupt'])->name('penilaianadministratif_telahupt');
+        Route::get('/administratifbelumupt', [PenilaianController::class, 'indexadministratif_belumupt'])->name('penilaianadministratif_belumupt');
         Route::get('/admin/penilaian/administratif/{id}/edit', [PenilaianController::class, 'administratifedit'])->name('penilaianadministratif.edit');
         Route::put('/admin/penilaian/administratif/{id}', [PenilaianController::class, 'administratifupdate'])->name('penilaianadministratif.update');
     });
 
     // Route for unsurs management
     Route::get('/unsur', [UnsurController::class, 'index'])->name('unsur');
+
+    // Route for test management
+    Route::get('/test', [TestController::class, 'index'])->name('test');
+
+    // Route for pengajuan management
+    Route::get('/ajukanpermohonan', [PengajuanController::class, 'index'])->name('pengajuan');
 
 
 
