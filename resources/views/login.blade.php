@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="img/logo/logo.png" rel="icon">
-        <title>RuangAdmin - Login</title>
+        <title>BLUD Single System - Login</title>
         <link href="{{ asset('dist/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('dist/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('dist/css/ruang-admin.css') }}" rel="stylesheet">
@@ -32,15 +32,16 @@
                     <!-- Konten Container 2 -->
                         <div class="login-form">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Masuk</h1>
+                                <h1 class="h4 text-gray-900 mb-4">BLUD Single System</h1>
                             </div>
-                            <form class="user">
+                            <form action="{{route ('proseslogin')}}" method="POST" class="user">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                                        placeholder="Username / Email">
+                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                                        placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -50,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <a href="{{ route('index') }}" class="btn btn-primary btn-block" style="background-color: #1A237E;">Login</a>
+                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1A237E;">Login</button>
                                 </div>
                                 <hr>
                             </form>

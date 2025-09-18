@@ -7,19 +7,23 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\UnsurController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\AuthController;
 
 // Default laravel page
 Route::get('/', function () {
     return view('welcome');
 });
     
-Route::get('/login', function () {
-    return view('admin.pages.login');
-})->name('login');
+
+Route::get('/loginpage', [AuthController::class, 'index'])->name('loginpage');
+Route::post('/loginprocess', [AuthController::class, 'login'])
+            ->name('proseslogin');
 
 Route::get('/register', function () {
     return view('admin.pages.register');
 })->name('register');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin Dashboard Route
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -74,9 +78,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     // Route for test management
     Route::get('/test', [TestController::class, 'index'])->name('test');
-
-    // Route for pengajuan management
-    Route::get('/ajukanpermohonan', [PengajuanController::class, 'index'])->name('pengajuan');
 
 
 
@@ -159,4 +160,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/charts', function () {
         return view('admin.pages.charts');
     })->name('charts');
+});
+
+// User Dashboard Route
+Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
+    
+    // Route for pengajuan management
+    Route::get('/ajukanpermohonan', [PengajuanController::class, 'index'])->name('pengajuan');
+    Route::post('/insertpengajuan', [PengajuanController::class, 'store'])
+            ->name('insertpengajuan');
 });
